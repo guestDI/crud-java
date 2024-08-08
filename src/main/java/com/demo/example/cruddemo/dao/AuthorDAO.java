@@ -9,7 +9,7 @@ public interface AuthorDAO {
     Author findById(Integer id);
     List<Author> findAll();
     List<Author> findByLastname(String lastname);
-    void update(Author author);
-    void delete(Integer id);
+    Author update(Author author);
+    void delete(Author author);
     void deleteByLastName(String lastname);
 }

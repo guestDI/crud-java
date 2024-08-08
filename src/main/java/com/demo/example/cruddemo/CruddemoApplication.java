@@ -35,7 +35,8 @@ public class CruddemoApplication {
 	}
 
 	private void removeAuthorById(AuthorDAO authorDAO) {
-		authorDAO.delete(3);
+		Author myAuthor = authorDAO.findById(1);
+		authorDAO.delete(myAuthor);
 	}
 
 	private void updateAuthor(AuthorDAO authorDAO) {

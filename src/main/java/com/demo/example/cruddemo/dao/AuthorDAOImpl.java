@@ -7,7 +7,6 @@ import jakarta.persistence.TypedQuery;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
-import org.springframework.web.bind.annotation.PathVariable;
 
 import java.util.List;
 
@@ -50,20 +49,16 @@ public class AuthorDAOImpl implements AuthorDAO {
     }
 
     @Override
-    @Transactional
-    public void update(Author author) {
-        entityManager.merge(author);
+    public Author update(Author author) {
+        return entityManager.merge(author);
     }
 
     @Override
-    @Transactional
-    public void delete(Integer id) {
-        Author author = entityManager.find(Author.class, id);
+    public void delete(Author author) {
         entityManager.remove(author);
     }
 
     @Override
-    @Transactional
     public void deleteByLastName(String lastname) {
         Query theQuery = entityManager.createQuery("DELETE FROM Author WHERE lastName=:theData");
 
